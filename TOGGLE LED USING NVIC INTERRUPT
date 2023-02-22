@@ -1,0 +1,62 @@
+#include"stm32f4xx.h"
+
+void TIM2_IRQHandler(void);
+
+int main()
+{
+  //enable TIM clock
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+  
+  //enable GPIOD clock
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+
+  //GPIOD configuration
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_13;
+  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+
+  
+  //TIM Configuration
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+  TIM_TimeBaseInitStruct.TIM_Prescaler= 8399;
+  TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
+  TIM_TimeBaseInitStruct.TIM_Period= 10000-1;
+  TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+ 
+  
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStruct);
+  
+  //NVIC configuration
+  NVIC_InitTypeDef NVIC_InitStruct;
+  NVIC_InitStruct.NVIC_IRQChannel=TIM2_IRQn;
+  NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
+  NVIC_InitStruct.NVIC_IRQChannelSubPriority=0;
+  NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
+  
+  NVIC_Init(&NVIC_InitStruct);
+  
+  //Enabling the interrupt
+  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+  TIM_Cmd(TIM2,ENABLE);
+  TIM2_IRQHandler();
+  while(1)
+  {
+  }
+  
+}
+
+void TIM2_IRQHandler(void)
+{
+  //Checks whether the TIM interrupt has occurred or not
+  
+    if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+      {//Clears the TIMx's interrupt pending bits
+      TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+      /* LED3 toggling */
+      GPIO_ToggleBits(GPIOD,GPIO_Pin_13);
+      }
+}
