@@ -1,0 +1,41 @@
+#include"stm32f4xx.h"
+int main()
+{
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+  
+  //enable GPIOD clock
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+
+  //GPIOD configuration
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_13;
+  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+
+  
+  //TIM Configuration
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+  TIM_TimeBaseInitStruct.TIM_Prescaler= 0x20CF;
+  TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
+  TIM_TimeBaseInitStruct.TIM_Period= 0x2710;
+  TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+ 
+  
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStruct);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_13);
+  
+ //LED Toggle
+  TIM_Cmd(TIM2,ENABLE);
+  while(1)
+  {
+    //toggle LED
+    if(TIM_GetCounter(TIM2)==(uint32_t)0x2710)
+       GPIO_ToggleBits(GPIOD,GPIO_Pin_13);
+  }
+   
+
+}
