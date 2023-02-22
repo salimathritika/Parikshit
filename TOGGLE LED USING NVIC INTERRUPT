@@ -18,13 +18,16 @@ int main()
   GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
   GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
   GPIO_Init(GPIOD,&GPIO_InitStruct);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_13);
 
   
   //TIM Configuration
   TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
-  TIM_TimeBaseInitStruct.TIM_Prescaler= 8399;
+  
+  TIM_TimeBaseInitStruct.TIM_Prescaler= 27999;
   TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
-  TIM_TimeBaseInitStruct.TIM_Period= 10000-1;
+  TIM_TimeBaseInitStruct.TIM_Period= 15000-1;
   TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
  
   
@@ -51,12 +54,9 @@ int main()
 
 void TIM2_IRQHandler(void)
 {
-  //Checks whether the TIM interrupt has occurred or not
-  
-    if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-      {//Clears the TIMx's interrupt pending bits
-      TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-      /* LED3 toggling */
+     TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+      //LED toggling 
       GPIO_ToggleBits(GPIOD,GPIO_Pin_13);
-      }
 }
+
+
