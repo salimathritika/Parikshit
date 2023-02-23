@@ -2,7 +2,7 @@
 
 void TIM4_IRQHandler(void);
 
-int flag=1;
+int flag=0;
 
 int main()
 {
@@ -13,42 +13,23 @@ int main()
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
   
   //GPIOD configuration for pin 12
-  GPIO_InitTypeDef GPIO_InitStruct1;
-  GPIO_InitStruct1.GPIO_Pin=GPIO_Pin_12;
-  GPIO_InitStruct1.GPIO_Mode=GPIO_Mode_OUT;
-  GPIO_InitStruct1.GPIO_Speed=GPIO_Fast_Speed;
-  GPIO_InitStruct1.GPIO_OType=GPIO_OType_PP;
-  GPIO_InitStruct1.GPIO_PuPd=GPIO_PuPd_UP;
-  GPIO_Init(GPIOD,&GPIO_InitStruct1);
-
-  //GPIOD configuration for pin 13
-  GPIO_InitTypeDef GPIO_InitStruct2;
-  GPIO_InitStruct2.GPIO_Pin=GPIO_Pin_13;
-  GPIO_InitStruct2.GPIO_Mode=GPIO_Mode_OUT;
-  GPIO_InitStruct2.GPIO_Speed=GPIO_Fast_Speed;
-  GPIO_InitStruct2.GPIO_OType=GPIO_OType_PP;
-  GPIO_InitStruct2.GPIO_PuPd=GPIO_PuPd_UP;
-  GPIO_Init(GPIOD,&GPIO_InitStruct2);
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
   
- // GPIO_SetBits(GPIOD,GPIO_Pin_13);
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_12;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
   
-  //GPIOD configuration for pin 14
-  GPIO_InitTypeDef GPIO_InitStruct3;
-  GPIO_InitStruct3.GPIO_Pin=GPIO_Pin_14;
-  GPIO_InitStruct3.GPIO_Mode=GPIO_Mode_OUT;
-  GPIO_InitStruct3.GPIO_Speed=GPIO_Fast_Speed;
-  GPIO_InitStruct3.GPIO_OType=GPIO_OType_PP;
-  GPIO_InitStruct3.GPIO_PuPd=GPIO_PuPd_UP;
-  GPIO_Init(GPIOD,&GPIO_InitStruct3);
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_13;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
   
-  //GPIOD configuration for pin 15
-  GPIO_InitTypeDef GPIO_InitStruct4;
-  GPIO_InitStruct4.GPIO_Pin=GPIO_Pin_15;
-  GPIO_InitStruct4.GPIO_Mode=GPIO_Mode_OUT;
-  GPIO_InitStruct4.GPIO_Speed=GPIO_Fast_Speed;
-  GPIO_InitStruct4.GPIO_OType=GPIO_OType_PP;
-  GPIO_InitStruct4.GPIO_PuPd=GPIO_PuPd_UP;
-  GPIO_Init(GPIOD,&GPIO_InitStruct4);
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_14;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+  
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_15;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
   
   GPIO_SetBits(GPIOD,GPIO_Pin_15);
 
@@ -58,7 +39,7 @@ int main()
   
   TIM_TimeBaseInitStruct.TIM_Prescaler= 27999;
   TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
-  TIM_TimeBaseInitStruct.TIM_Period= 5000-1;
+  TIM_TimeBaseInitStruct.TIM_Period= 4000-1;
   TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
  
   
@@ -86,7 +67,10 @@ void TIM4_IRQHandler(void)
 {
       TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
       //LED toggling 
-      if(flag==1)
+      if(flag==0)  //To account for internal delay
+      {flag=1;
+      }
+      else if(flag==1)
       {
         GPIO_ToggleBits(GPIOD,GPIO_Pin_15);
         GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
@@ -111,5 +95,4 @@ void TIM4_IRQHandler(void)
         flag=1;
       }
 }
-
 
