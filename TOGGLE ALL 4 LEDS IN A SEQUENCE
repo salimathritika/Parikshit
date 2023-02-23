@@ -67,7 +67,7 @@ void TIM4_IRQHandler(void)
 {
       TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
       //LED toggling 
-      if(flag==0)  //To account for internal delay
+      if(flag==0)  //To account for internal delay which makes led13 glow instead of led12
       {flag=1;
       }
       else if(flag==1)
