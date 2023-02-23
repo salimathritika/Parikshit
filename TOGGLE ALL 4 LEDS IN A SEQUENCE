@@ -1,0 +1,115 @@
+#include"stm32f4xx.h"
+
+void TIM4_IRQHandler(void);
+
+int flag=1;
+
+int main()
+{
+  //enable TIM clock
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+  
+  //enable GPIOD clock
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+  
+  //GPIOD configuration for pin 12
+  GPIO_InitTypeDef GPIO_InitStruct1;
+  GPIO_InitStruct1.GPIO_Pin=GPIO_Pin_12;
+  GPIO_InitStruct1.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct1.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct1.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct1.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct1);
+
+  //GPIOD configuration for pin 13
+  GPIO_InitTypeDef GPIO_InitStruct2;
+  GPIO_InitStruct2.GPIO_Pin=GPIO_Pin_13;
+  GPIO_InitStruct2.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct2.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct2.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct2.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct2);
+  
+ // GPIO_SetBits(GPIOD,GPIO_Pin_13);
+  
+  //GPIOD configuration for pin 14
+  GPIO_InitTypeDef GPIO_InitStruct3;
+  GPIO_InitStruct3.GPIO_Pin=GPIO_Pin_14;
+  GPIO_InitStruct3.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct3.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct3.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct3.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct3);
+  
+  //GPIOD configuration for pin 15
+  GPIO_InitTypeDef GPIO_InitStruct4;
+  GPIO_InitStruct4.GPIO_Pin=GPIO_Pin_15;
+  GPIO_InitStruct4.GPIO_Mode=GPIO_Mode_OUT;
+  GPIO_InitStruct4.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct4.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct4.GPIO_PuPd=GPIO_PuPd_UP;
+  GPIO_Init(GPIOD,&GPIO_InitStruct4);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_15);
+
+  
+  //TIM Configuration
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+  
+  TIM_TimeBaseInitStruct.TIM_Prescaler= 27999;
+  TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
+  TIM_TimeBaseInitStruct.TIM_Period= 5000-1;
+  TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+ 
+  
+  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStruct);
+  
+  //NVIC configuration
+  NVIC_InitTypeDef NVIC_InitStruct;
+  NVIC_InitStruct.NVIC_IRQChannel=TIM4_IRQn;
+  NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
+  NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
+  
+  NVIC_Init(&NVIC_InitStruct);
+  
+  //Enabling the interrupt
+  TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
+  TIM_Cmd(TIM4,ENABLE);
+  TIM4_IRQHandler();
+  while(1)
+  {
+  }
+  
+}
+
+void TIM4_IRQHandler(void)
+{
+      TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
+      //LED toggling 
+      if(flag==1)
+      {
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_15);
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
+        flag=2;
+      }
+      else if(flag==2)
+      {
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_13);
+        flag=3;
+      }
+       else if(flag==3)
+      {
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_13);
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_14);
+        flag=4;
+      }
+       else if(flag==4)
+      {
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_14);
+        GPIO_ToggleBits(GPIOD,GPIO_Pin_15);
+        flag=1;
+      }
+}
+
+
