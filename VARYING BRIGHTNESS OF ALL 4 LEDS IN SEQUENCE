@@ -1,0 +1,129 @@
+#include"stm32f4xx.h"
+
+int main()
+{
+  //enable TIM clock
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+  
+  //enable GPIOD clock
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+  
+  //GPIOD configuration for pins
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_AF;
+  GPIO_InitStruct.GPIO_Speed=GPIO_Fast_Speed;
+  GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
+  GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
+  
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_12;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
+  
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_13;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);
+  
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_14;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
+  
+  GPIO_InitStruct.GPIO_Pin=GPIO_Pin_15;
+  GPIO_Init(GPIOD,&GPIO_InitStruct);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);
+  
+  
+  //TIM Configuration
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+  
+  TIM_TimeBaseInitStruct.TIM_Prescaler= 0;
+  TIM_TimeBaseInitStruct.TIM_CounterMode=TIM_CounterMode_Up;
+  TIM_TimeBaseInitStruct.TIM_Period= 1000-1;
+  TIM_TimeBaseInitStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+ 
+  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStruct);
+  
+  //PWM configuration
+  TIM_OCInitTypeDef TIM_OCInitStruct;
+  TIM_OCInitStruct.TIM_OCMode=TIM_OCMode_PWM1;
+  TIM_OCInitStruct.TIM_OutputState=TIM_OutputState_Enable;
+  TIM_OCInitStruct.TIM_Pulse=0; //initial duty cycle is 0%
+  TIM_OCInitStruct.TIM_OCPolarity=TIM_OCPolarity_High;
+  
+  TIM_OC1Init(TIM4,&TIM_OCInitStruct);
+  TIM_OC2Init(TIM4,&TIM_OCInitStruct);
+  TIM_OC3Init(TIM4,&TIM_OCInitStruct);
+  TIM_OC4Init(TIM4,&TIM_OCInitStruct);
+  
+  TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  
+  TIM_Cmd(TIM4,ENABLE);
+  
+  int duty=0;
+  int increment=1;
+  
+  while(1)
+  {    
+      while(1)
+      {
+        
+    TIM_SetCompare1(TIM4,duty);
+    duty=duty+increment;
+    if(duty>=1000)
+      increment=-increment;
+      
+    if(duty<=0)
+      break;
+    for (int i = 0; i < 10000; i++); //delay for smooth change of pwm
+      }
+      duty=0;
+      increment=1;
+    
+      while(1)
+      {
+        
+    TIM_SetCompare2(TIM4,duty);
+    duty=duty+increment;
+    if(duty>=1000)
+      increment=-increment;
+      
+    if(duty<=0)
+      break;
+    for (int i = 0; i < 10000; i++); //delay for smooth change of pwm
+      }
+      duty=0;
+      increment=1;
+      
+      while(1)
+      {
+        
+    TIM_SetCompare3(TIM4,duty);
+    duty=duty+increment;
+    if(duty>=1000)
+      increment=-increment;
+      
+    if(duty<=0)
+      break;
+    for (int i = 0; i < 10000; i++); //delay for smooth change of pwm
+      }
+      duty=0;
+      increment=1;
+    
+      while(1)
+      {
+        
+    TIM_SetCompare4(TIM4,duty);
+    duty=duty+increment;
+    if(duty>=1000)
+      increment=-increment;
+      
+    if(duty<=0)
+      break;
+    for (int i = 0; i < 10000; i++); //delay for smooth change of pwm
+      }
+      duty=0;
+      increment=1;  
+  }  
+}
