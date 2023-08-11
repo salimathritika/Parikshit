@@ -1,0 +1,429 @@
+#include<stdio.h>
+
+struct time
+{
+    int hour;
+    int min;
+    int sec;
+};
+
+void read(struct time t[]);
+void display(struct time t[],struct time add,struct time diff);
+struct time addition(struct time t[]);
+struct time difference(struct time t[]);
+
+
+int main()
+{
+    struct time t[2],add,diff;
+    read(t);
+    add=addition(t);
+    diff=difference(t);
+    display(t,add,diff);
+}
+
+void read(struct time t[])
+{
+    printf("Enter the hours minutes and seconds for first time:\n ");
+    scanf("%d",&t[0].hour);
+    scanf("%d",&t[0].min);
+    scanf("%d",&t[0].sec);
+    printf("Enter the hours minutes and seconds for second time:\n ");
+    scanf("%d",&t[1].hour);
+    scanf("%d",&t[1].min);
+    scanf("%d",&t[1].sec);
+}
+
+void display(struct time t[],struct time add,struct time diff)
+{
+    printf("The hours minutes and seconds for first time:\n ");
+    printf("%d:%d:%d\n",t[0].hour,t[0].min,t[0].sec);
+    printf("The hours minutes and seconds for second time:\n ");
+    printf("%d:%d:%d\n",t[1].hour,t[1].min,t[1].sec);
+    printf("The hours minutes and seconds for added time:\n ");
+    printf("%d:%d:%d\n",add.hour,add.min,add.sec);
+    printf("The hours minutes and seconds for subtracted time:\n ");
+    printf("%d:%d:%d\n",diff.hour,diff.min,diff.sec);
+
+}
+
+struct time addition(struct time t[])
+{
+    struct time add;
+    add.hour=t[0].hour+t[1].hour;
+    if(add.hour>=24)
+        add.hour=add.hour-24;
+    add.min=t[0].min+t[1].min;
+    if(add.min>=60)
+        add.min=add.min-60;
+    add.sec=t[0].sec+t[1].sec;
+    if(add.sec>=60)
+        add.sec=add.sec-60;
+        return add;
+
+}
+
+struct time difference(struct time t[])
+{
+    struct time diff;
+    diff.hour=t[0].hour-t[1].hour;
+    if(diff.hour<0)
+    {
+        diff.hour=-diff.hour;
+        diff.hour=24-diff.hour;
+    }
+
+    diff.min=t[0].min-t[1].min;
+    if(diff.min<0)
+    {
+        diff.min=-diff.min;
+        diff.hour-=1;
+        diff.min=60-diff.min;
+    }
+    diff.sec=t[0].sec-t[1].sec;
+    if(diff.sec<0)
+    {
+        diff.sec=-diff.sec;
+        diff.min-=1;
+        diff.sec=60-diff.sec;
+    }
+    return diff;
+
+}
+
+
+
+
+#include<stdio.h>
+struct student
+{
+    char name[100];
+    int roll;
+    int grade;
+};
+int n;
+
+void read(struct student s[]);
+void display(struct student s[]);
+void sort(struct student s[]);
+
+int main()
+{
+    printf("Enter the number of students:");
+    scanf("%d",&n);
+    struct student s[n];
+    read(s);
+    sort(s);
+    display(s);
+}
+
+void read(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the name of the student");
+        scanf("%s",&s[i].name);
+        printf("Enter the roll number of the student");
+        scanf("%d",&s[i].roll);
+        printf("Enter the grade of the student");
+        scanf("%d",&s[i].grade);
+    }
+}
+
+void display(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("%d)",(i+1));
+        printf("The name of the student:%s\n",s[i].name);
+        printf("The roll number of the student:%d\n",s[i].roll);
+        printf("The grade of the student:%d\n",s[i].grade);
+    }
+}
+
+
+void sort(struct student s[])
+{
+    int i,j;
+    struct student temp;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(s[j].roll>s[j+1].roll)
+            {
+               temp=s[j];
+               s[j]=s[j+1];
+               s[j+1]=temp;
+            }
+        }
+    }
+}
+
+
+
+#include<stdio.h>
+struct student
+{
+    char name[100];
+    int roll;
+    int grade;
+};
+int n;
+
+void read(struct student s[]);
+void display(struct student s[]);
+void sort(struct student s[]);
+
+int main()
+{
+    printf("Enter the number of students:");
+    scanf("%d",&n);
+    struct student s[n];
+    read(s);
+    sort(s);
+    display(s);
+}
+
+void read(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the name of the student");
+        scanf("%s",&s[i].name);
+        printf("Enter the roll number of the student");
+        scanf("%d",&s[i].roll);
+        printf("Enter the grade of the student");
+        scanf("%d",&s[i].grade);
+    }
+}
+
+void display(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("%d)",(i+1));
+        printf("The name of the student:%s\n",s[i].name);
+        printf("The roll number of the student:%d\n",s[i].roll);
+        printf("The grade of the student:%d\n",s[i].grade);
+    }
+}
+
+
+void sort(struct student s[])
+{
+    int i,j;
+    struct student temp;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(s[j].roll>s[j+1].roll)
+            {
+               temp=s[j];
+               s[j]=s[j+1];
+               s[j+1]=temp;
+            }
+        }
+    }
+}
+
+
+
+#include<stdio.h>
+struct student
+{
+    char name[100];
+    int roll;
+    int grade;
+};
+int n;
+
+void read(struct student s[]);
+void display(struct student s[]);
+void sort(struct student s[]);
+
+int main()
+{
+    printf("Enter the number of students:");
+    scanf("%d",&n);
+    struct student s[n];
+    read(s);
+    sort(s);
+    display(s);
+}
+
+void read(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the name of the student");
+        scanf("%s",&s[i].name);
+        printf("Enter the roll number of the student");
+        scanf("%d",&s[i].roll);
+        printf("Enter the grade of the student");
+        scanf("%d",&s[i].grade);
+    }
+}
+
+void display(struct student s[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("%d)",(i+1));
+        printf("The name of the student:%s\n",s[i].name);
+        printf("The roll number of the student:%d\n",s[i].roll);
+        printf("The grade of the student:%d\n",s[i].grade);
+    }
+}
+
+
+void sort(struct student s[])
+{
+    int i,j;
+    struct student temp;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(s[j].roll>s[j+1].roll)
+            {
+               temp=s[j];
+               s[j]=s[j+1];
+               s[j+1]=temp;
+            }
+        }
+    }
+}
+
+
+
+#include <stdio.h>
+
+int length(char str[]);
+void concat(char str1[],char str2[]);
+int comp(char str1[],char str2[]);
+void insert(char str1[],char str2[],int p);
+//void del(char str1[],int p);
+
+int main()
+{
+    int i,len,opt,pos,flag=0;
+    char s1[100],s2[100];
+    printf("1. To find length of string\n2. To concatenate two strings\n3. To compare two strings\n4. To insert a substring\n5. To delete a substring\n");
+    scanf("%d",&opt);
+    switch(opt)
+    {
+    case 1:
+        {
+            printf("Enter the string: ");
+            scanf("%s",s1);
+            printf("The length of %s is %d",s1,length(s1));
+            break;
+        }
+    case 2:
+        {
+           printf("Enter the strings:\n ");
+            scanf("%s",s1);
+            scanf("%s",s2);
+            concat(s1,s2);
+            printf("The concatenated string is:%s",s1);
+            break;
+        }
+    case 3:
+        {
+            printf("Enter the strings:\n ");
+             scanf("%s",s1);
+            scanf("%s",s2);
+            flag=comp(s1,s2);
+            if(flag==1)
+                printf("%s and %s are equal",s1,s2);
+            else
+                printf("%s and %s are not equal",s1,s2);
+            break;
+        }
+    case 4:
+        {
+            printf("Enter the strings:\n ");
+             scanf("%s",s1);
+             printf("Enter the substring:\n ");
+             scanf("%s",s2);
+             printf("Enter the position:\n ");
+             scanf("%d",&pos);
+             insert(s1,s2,pos);
+             printf("The new string is:%s",s1);
+             break;
+        }
+   /* case 5:
+        {
+            printf("Enter the string:\n ");
+             scanf("%s",s1);
+             printf("Enter the position from where it should be deleted:\n ");
+             scanf("%d",pos);
+             del(s1,pos);
+             printf("The new string is:%s",s1);
+             break;
+        }*/
+    default:
+        printf("Wrong choice");
+
+    }
+}
+
+
+int length(char str[])
+{
+    int i;
+    for(i=0;str[i]!='\0';i++);
+    return i;
+}
+
+void concat(char str1[],char str2[])
+{
+    int i,j;
+    i=length(str1);
+    for(j=0;str2[j]!='\0';j++,i++)
+    {
+        str1[i]=str2[j];
+    }
+    str1[i]='\0';
+}
+
+int comp(char str1[],char str2[])
+{
+    int i;
+    while((str1[i]!='\0') || (str2[i]!='\0'))
+    {
+        if(str1[i]!=str2[i])
+            break;
+        i++;
+    }
+    if(str1[i]==str2[i])
+        return 1;
+    return 0;
+}
+
+void insert(char str1[],char str2[],int p)
+{
+    char temp;
+    int len,i,j,n;
+    len=length(str1);
+    n=length(str2);
+    for(i=len+n;i>=p;i--)
+    {
+        temp=str1[i];
+        str1[i]=str1[i-1];
+        str1[i-1]=temp;
+    }
+    for(i=p,j=0;i<p+n;i++,j++)
+        str1[p]=str2[j];
+    str1[p]='\0';
+}
+
+void del(char str1[],int p)
