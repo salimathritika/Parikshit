@@ -1,0 +1,16 @@
+../User_Defined/motordriver.c:32:6:transfer	24	static
+../User_Defined/motordriver.c:69:6:motor_initialize	16	static
+../User_Defined/motordriver.c:147:9:check_rotorlock	16	static
+../User_Defined/motordriver.c:187:6:set_rpm_motorx	24	static
+../User_Defined/motordriver.c:194:6:set_rpm_motory	24	static
+../User_Defined/motordriver.c:201:6:set_rpm_motorz	24	static
+../User_Defined/motordriver.c:217:6:set_desired_motorx	24	static
+../User_Defined/motordriver.c:225:6:set_desired_motory	24	static
+../User_Defined/motordriver.c:233:6:set_desired_motorz	24	static
+../User_Defined/motordriver.c:250:6:HAL_TIM_IC_CaptureCallback	64	static
+../User_Defined/motordriver.c:355:6:maintain_rpm_x	16	static
+../User_Defined/motordriver.c:380:6:maintain_rpm_y	16	static
+../User_Defined/motordriver.c:405:6:maintain_rpm_z	16	static
+../User_Defined/motordriver.c:438:6:sleep_x	8	static
+../User_Defined/motordriver.c:444:6:sleep_y	8	static
+../User_Defined/motordriver.c:450:6:sleep_z	8	static

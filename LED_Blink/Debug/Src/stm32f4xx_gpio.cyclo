@@ -1,0 +1,14 @@
+../Src/stm32f4xx_gpio.c:121:6:GPIO_DeInit	12
+../Src/stm32f4xx_gpio.c:196:6:GPIO_Init	5
+../Src/stm32f4xx_gpio.c:248:6:GPIO_StructInit	1
+../Src/stm32f4xx_gpio.c:271:6:GPIO_PinLockConfig	1
+../Src/stm32f4xx_gpio.c:317:9:GPIO_ReadInputDataBit	2
+../Src/stm32f4xx_gpio.c:343:10:GPIO_ReadInputData	1
+../Src/stm32f4xx_gpio.c:360:9:GPIO_ReadOutputDataBit	2
+../Src/stm32f4xx_gpio.c:386:10:GPIO_ReadOutputData	1
+../Src/stm32f4xx_gpio.c:406:6:GPIO_SetBits	1
+../Src/stm32f4xx_gpio.c:427:6:GPIO_ResetBits	1
+../Src/stm32f4xx_gpio.c:449:6:GPIO_WriteBit	2
+../Src/stm32f4xx_gpio.c:474:6:GPIO_Write	1
+../Src/stm32f4xx_gpio.c:490:6:GPIO_ToggleBits	1
+../Src/stm32f4xx_gpio.c:573:6:GPIO_PinAFConfig	1

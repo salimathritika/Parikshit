@@ -1,0 +1,14 @@
+../User_Defined/eeprom.c:10:6:buffer	16	static
+../User_Defined/eeprom.c:24:6:BSP_EEPROM_Init	8	static
+../User_Defined/eeprom.c:39:6:BSP_EEPROM_CS_Low	8	static
+../User_Defined/eeprom.c:59:6:BSP_EEPROM_CS_High	8	static
+../User_Defined/eeprom.c:95:6:BSP_EEPROM_WriteCmd	16	static
+../User_Defined/eeprom.c:121:15:BSP_EEPROM_ReadStatusRegister	24	static
+../User_Defined/eeprom.c:155:6:BSP_EEPROM_InitAddress	24	static
+../User_Defined/eeprom.c:195:6:BSP_EEPROM_ReadData	24	static
+../User_Defined/eeprom.c:227:6:BSP_EEPROM_WriteData	32	static
+../User_Defined/eeprom.c:281:6:BSP_EEPROM_Write	8	static
+../User_Defined/eeprom.c:295:6:BSP_EEPROM_Read	32	static
+../User_Defined/eeprom.c:321:6:BSP_EEPROM_ReadFlags	16	static
+../User_Defined/eeprom.c:330:6:BSP_EEPROM_WriteFlags	16	static
+../User_Defined/eeprom.c:338:6:BSP_EEPROM_WriteLocationZero	16	static

@@ -19,3 +19,4 @@
 ../User_Defined/motordriver.c:497:6:stop_motor_x	2
 ../User_Defined/motordriver.c:506:6:stop_motor_y	2
 ../User_Defined/motordriver.c:515:6:stop_motor_z	2
+../User_Defined/motordriver.c:525:8:fg_value_x	1

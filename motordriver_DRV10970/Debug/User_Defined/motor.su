@@ -1,0 +1,2 @@
+../User_Defined/motor.c:19:6:transfer	24	static
+../User_Defined/motor.c:34:6:motor_initialize	16	static

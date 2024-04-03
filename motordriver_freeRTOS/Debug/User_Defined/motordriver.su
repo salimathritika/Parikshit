@@ -19,3 +19,4 @@
 ../User_Defined/motordriver.c:497:6:stop_motor_x	16	static
 ../User_Defined/motordriver.c:506:6:stop_motor_y	16	static
 ../User_Defined/motordriver.c:515:6:stop_motor_z	16	static
+../User_Defined/motordriver.c:525:8:fg_value_x	4	static

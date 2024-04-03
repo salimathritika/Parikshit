@@ -1,0 +1,7 @@
+../User_Defined/deployment.c:17:6:deployment_init	16	static
+../User_Defined/deployment.c:33:6:deploy_antenna	8	static
+../User_Defined/deployment.c:47:6:long_deploy_antenna	8	static
+../User_Defined/deployment.c:61:6:deploy_door	8	static
+../User_Defined/deployment.c:75:6:long_deploy_door	8	static
+../User_Defined/deployment.c:89:6:deploy_tether	8	static
+../User_Defined/deployment.c:103:6:long_deploy_tether	8	static

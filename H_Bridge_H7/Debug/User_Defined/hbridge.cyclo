@@ -1,0 +1,16 @@
+../User_Defined/hbridge.c:21:6:initialize	1
+../User_Defined/hbridge.c:98:6:sleep_1	1
+../User_Defined/hbridge.c:110:6:sleep_2	1
+../User_Defined/hbridge.c:122:6:sleep_3	1
+../User_Defined/hbridge.c:138:6:give_torque1	4
+../User_Defined/hbridge.c:191:6:give_torque2	4
+../User_Defined/hbridge.c:243:6:give_torque3	4
+../User_Defined/hbridge.c:292:6:fastdecay_torque1	1
+../User_Defined/hbridge.c:306:6:fastdecay_torque2	1
+../User_Defined/hbridge.c:320:6:fastdecay_torque3	1
+../User_Defined/hbridge.c:334:6:slowdecay_torque1	1
+../User_Defined/hbridge.c:348:6:slowdecay_torque2	1
+../User_Defined/hbridge.c:362:6:slowdecay_torque3	1
+../User_Defined/hbridge.c:378:6:setreset_x	3
+../User_Defined/hbridge.c:391:6:setreset_y	3
+../User_Defined/hbridge.c:404:6:setreset_z	3

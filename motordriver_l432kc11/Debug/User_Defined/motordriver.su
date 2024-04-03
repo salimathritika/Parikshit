@@ -1,0 +1,5 @@
+../User_Defined/motordriver.c:44:6:motor_initialize	16	static
+../User_Defined/motordriver.c:124:9:check_rotorlock	16	static
+../User_Defined/motordriver.c:164:6:set_rpm_motorx	32	static
+../User_Defined/motordriver.c:194:6:set_desired_motorx	24	static
+../User_Defined/motordriver.c:487:6:stop_motor_x	16	static

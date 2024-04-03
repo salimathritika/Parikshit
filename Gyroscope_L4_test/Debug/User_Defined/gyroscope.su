@@ -1,0 +1,4 @@
+../User_Defined/gyroscope.c:19:13:BSP_Gyroscope_Init	16	static
+../User_Defined/gyroscope.c:46:13:BSP_Gyroscope_SelfTest	80	static
+../User_Defined/gyroscope.c:195:13:BSP_Gyroscope_ReadRegister	48	static
+../User_Defined/gyroscope.c:238:13:BSP_Gyroscope_GetValues	48	static

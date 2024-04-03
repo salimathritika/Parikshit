@@ -1,0 +1,17 @@
+../User_Defined/sd.c:19:15:SELECT	8	static
+../User_Defined/sd.c:25:15:DESELECT	8	static
+../User_Defined/sd.c:31:15:SPI_TxByte	16	static
+../User_Defined/sd.c:38:16:SPI_RxByte	24	static
+../User_Defined/sd.c:51:15:SPI_RxBytePtr	16	static
+../User_Defined/sd.c:57:16:SD_ReadyWait	16	static
+../User_Defined/sd.c:74:17:SD_PowerOn	32	static
+../User_Defined/sd.c:116:17:SD_PowerOff	4	static
+../User_Defined/sd.c:122:18:SD_CheckPower	4	static
+../User_Defined/sd.c:129:15:SD_RxDataBlock	24	static
+../User_Defined/sd.c:159:15:SD_TxDataBlock	24	static
+../User_Defined/sd.c:208:17:SD_SendCmd	24	static
+../User_Defined/sd.c:249:12:SD_disk_initialize	32	static
+../User_Defined/sd.c:348:12:SD_disk_status	16	static
+../User_Defined/sd.c:357:12:SD_disk_read	24	static
+../User_Defined/sd.c:400:12:SD_disk_write	24	static
+../User_Defined/sd.c:454:22:SD_disk_ioctl	56	static

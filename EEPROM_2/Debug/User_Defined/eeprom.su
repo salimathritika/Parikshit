@@ -1,0 +1,9 @@
+../User_Defined/eeprom.c:9:6:buffers	24	static
+../User_Defined/eeprom.c:24:6:enable_write	16	static
+../User_Defined/eeprom.c:39:6:write_SR	16	static
+../User_Defined/eeprom.c:56:5:read_SR	24	static
+../User_Defined/eeprom.c:78:6:read_data	24	static
+../User_Defined/eeprom.c:95:6:write_data	16	static
+../User_Defined/eeprom.c:117:6:page_erase	16	static
+../User_Defined/eeprom.c:136:6:read_IDpage	24	static
+../User_Defined/eeprom.c:154:6:write_IDpage	16	static

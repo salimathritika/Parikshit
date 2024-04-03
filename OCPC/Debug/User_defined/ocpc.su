@@ -1,0 +1,5 @@
+../User_defined/ocpc.c:13:6:BSP_OCPC_Init	8	static
+../User_defined/ocpc.c:28:6:BSP_OCPC_DeInit	8	static
+../User_defined/ocpc.c:46:9:BSP_OCPC_GetFaultStatus	24	static
+../User_defined/ocpc.c:90:9:BSP_OCPC_GetOutputStatus	24	static
+../User_defined/ocpc.c:134:9:BSP_OCPC_SetOutputStatus	24	static

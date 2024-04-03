@@ -1,0 +1,24 @@
+C:/Users/ritik/Desktop/STM32CubeIDE/CPAL lib/inc_core/core_cm4.h:1467:22:NVIC_SetPriority	16	static
+C:/Users/ritik/Desktop/STM32CubeIDE/CPAL lib/inc_core/core_cm4.h:1594:26:SysTick_Config	16	static
+../Src/cpal_i2c.c:132:10:CPAL_I2C_Init	16	static
+../Src/cpal_i2c.c:305:10:CPAL_I2C_DeInit	16	static
+../Src/cpal_i2c.c:399:10:CPAL_I2C_StructInit	16	static
+../Src/cpal_i2c.c:434:10:CPAL_I2C_Write	16	static
+../Src/cpal_i2c.c:553:10:CPAL_I2C_Read	24	static
+../Src/cpal_i2c.c:863:10:CPAL_I2C_IsDeviceReady	24	static
+../Src/cpal_i2c.c:944:10:CPAL_I2C_EV_IRQHandler	24	static
+../Src/cpal_i2c.c:1047:10:CPAL_I2C_ER_IRQHandler	16	static
+../Src/cpal_i2c.c:1174:10:CPAL_I2C_DMA_TX_IRQHandler	16	static
+../Src/cpal_i2c.c:1286:10:CPAL_I2C_DMA_RX_IRQHandler	16	static
+../Src/cpal_i2c.c:1405:6:SysTick_Handler	16	static
+../Src/cpal_i2c.c:1451:10:CPAL_I2C_Timeout	16	static
+../Src/cpal_i2c.c:1475:17:I2C_MASTER_START_Handle	24	static
+../Src/cpal_i2c.c:1578:17:I2C_MASTER_ADDR_Handle	16	static
+../Src/cpal_i2c.c:1782:17:I2C_MASTER_ADD10_Handle	16	static
+../Src/cpal_i2c.c:1821:17:I2C_MASTER_TXE_Handle	16	static
+../Src/cpal_i2c.c:1901:17:I2C_MASTER_RXNE_Handle	16	static
+../Src/cpal_i2c.c:2221:17:I2C_SLAVE_ADDR_Handle	16	static
+../Src/cpal_i2c.c:2289:17:I2C_SLAVE_STOP_Handle	16	static
+../Src/cpal_i2c.c:2368:17:I2C_SLAVE_TXE_Handle	16	static
+../Src/cpal_i2c.c:2407:17:I2C_SLAVE_RXNE_Handle	16	static
+../Src/cpal_i2c.c:2473:10:CPAL_I2C_Enable_DMA_IT	16	static

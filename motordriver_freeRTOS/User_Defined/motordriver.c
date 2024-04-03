@@ -521,3 +521,10 @@ void stop_motor_z()
 	}
 	set_rpm_motorz(0,frz);
 }
+
+double fg_value_x()
+{
+
+//	HAL_Delay(500);
+	return fbx_duty;
+}

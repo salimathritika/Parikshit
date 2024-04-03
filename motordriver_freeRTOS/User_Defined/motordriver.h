@@ -49,5 +49,6 @@ void stop_motor_x();
 void stop_motor_y();
 void stop_motor_z();
 
+double fg_value_x();
 
 #endif
